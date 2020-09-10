@@ -3,13 +3,13 @@ import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
 
-import Cart from './components/cart/cart'
+import Header from './components/header/header'
 
 
 function App() {
   return (
     <Provider store={store}>
-      <Cart />
+      <Header />
     </Provider>
   );
 }

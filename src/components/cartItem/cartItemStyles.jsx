@@ -62,7 +62,7 @@ export const Price = styled.p`
 `
 
 export const Separator = styled.hr`
-    color: #777;
+    color: rgba(0,0,0,.3);
     width: 90%;
 `
 

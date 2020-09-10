@@ -30,4 +30,4 @@ const CartItem = ({item, addItem, removeItem, clearItem}) => {
     )
 }
 
-export default CartItem;
+export default React.memo(CartItem);
