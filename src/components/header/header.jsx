@@ -1,10 +1,10 @@
 import React from 'react'
-import {Container, Collapsable, Brand, BrandImage, BrandText, Search, SearchIcon, SearchBar, UserOptions, Icon} from './headerStyles'
+import {Container, Collapsable, Brand, BrandImage, BrandText, Search, SearchIcon, SearchBar, UserOptions} from './headerStyles'
 import logo from '../../assets/northwind.svg'
 import search from '../../assets/search.svg'
-import user from '../../assets/user.svg'
 
 import CartIcon from '../cartIcon/cartIcon'
+import UserIcon from '../userIcon/userIcon'
 
 const Header = () => {
     console.log(window.innerWidth)
@@ -20,7 +20,7 @@ const Header = () => {
                     <SearchBar type='text' name='search' placeholder='I am looking for ...' />
                 </Search>
                 <UserOptions>
-                    <Icon src={user} />
+                    <UserIcon />
                     <CartIcon />
                 </UserOptions>
             </Collapsable>
