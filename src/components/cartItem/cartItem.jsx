@@ -1,33 +1,33 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { ItemContainer, Image, Container, QuantityOptions, AssetContainer, Button, Title, Description, Rating, Quantity, Price, Separator } from './cartItemStyles'
 
-const CartItem = ({item, addItem, removeItem, clearItem}) => {
-    const {name, description, quantity, ppi, rating} = item
+import { GlobalContainer,ItemContainer, Image, Container, AssetContainer, Title, Price, Button } from './cartItemStyles'
+
+import { ClearFromCart } from '../../redux/cart/cartActions'
+
+const CartItem = ({item, clearItem}) => {
+    const {name, quantity, ppi } = item
     return(
-        <div>
+        <GlobalContainer>
             <ItemContainer>
                 <Container>
                     <Image />
                 </Container>
-                <Container>
+                <Container style={{marginRight: '16px'}}>
                     <Title>{name}</Title>
-                    <Description>{description}</Description>
-                    <Rating>{rating}</Rating>
+                    <Price>{(ppi * quantity).toFixed(2)}$</Price>
                 </Container>
                 <AssetContainer>
-                    <QuantityOptions>
-                        <Button onClick={() => removeItem(item)} >&lt;</Button>
-                        <Quantity>{quantity}</Quantity>
-                        <Button onClick={() => addItem(item)} >&gt;</Button>
-                    </QuantityOptions>
-                    <Price>{(ppi * quantity).toFixed(2)}$</Price>
-                    <Button onClick={() => clearItem(item)}>X</Button>
+                    <Button onClick={() => clearItem(item)} >X</Button>
                 </AssetContainer>
             </ItemContainer>
-            <Separator />
-        </div>
+        </GlobalContainer>
     )
 }
 
-export default React.memo(CartItem);
+const mapDispatch = dispatch => ({
+    clearItem: item => dispatch(ClearFromCart(item))
+})
+
+export default connect(null, mapDispatch)(React.memo(CartItem));

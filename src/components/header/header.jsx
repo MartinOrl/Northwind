@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
-import {Container, Brand, BrandImage, BrandText, Search, SearchIcon, SearchBar, UserOptions, Icon} from './headerStyles'
+import React from 'react'
+import {Container, Collapsable, Brand, BrandImage, BrandText, Search, SearchIcon, SearchBar, UserOptions, Icon} from './headerStyles'
 import logo from '../../assets/northwind.svg'
 import search from '../../assets/search.svg'
 import user from '../../assets/user.svg'
 
-const Header = () => {
-    const [active, setActive] = useState(false)
-    console.log(active)
+import CartIcon from '../cartIcon/cartIcon'
 
+const Header = () => {
+    console.log(window.innerWidth)
     return(
         <Container>
             <Brand>
                 <BrandImage src={logo} />
                 <BrandText>Northwind</BrandText>
             </Brand>
-            <Search>
-                <SearchIcon active={active} src={search} />
-                <SearchBar type='text' name='search' placeholder='I am looking for ...' />
-            </Search>
-            <UserOptions>
-                <Icon src={user} />
-            </UserOptions>
+            <Collapsable>
+                <Search>
+                    <SearchIcon src={search} />
+                    <SearchBar type='text' name='search' placeholder='I am looking for ...' />
+                </Search>
+                <UserOptions>
+                    <Icon src={user} />
+                    <CartIcon />
+                </UserOptions>
+            </Collapsable>
         </Container>
     )
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 16px 32px;
+    padding: 16px 48px;
 `
 
 export const Brand = styled.div`
@@ -39,6 +39,7 @@ export const Search = styled.div`
     border: none;
     border-bottom: 1px solid black;
     position: relative;
+    margin-right: auto;
     &:focus-within{
         ${SearchIcon}{
             transform: rotate(45deg);
@@ -59,11 +60,21 @@ export const SearchBar = styled.input`
 
 export const UserOptions = styled.div`
     height: 100%;
-    margin-left: auto;
+    margin-left: 200px;
+    display: flex;
+    flex-direction: row;
 `
 
 export const Icon = styled.img`
-    height: 40px;
+    height: 30px;
     width: auto;
-    margin: 0 8px;
+    margin: auto 8px;
+`
+
+export const Collapsable = styled.div`
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
 `

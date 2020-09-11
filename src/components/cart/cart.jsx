@@ -1,35 +1,26 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import CartItem from '../cartItem/cartItem'
 
-import { CartItems } from '../../testSuite'
-import { AddItem, RemoveItem, ClearFromCart } from '../../redux/cart/cartActions';
 import { selectCartItems } from '../../redux/cart/cartSelectors'
 import { createStructuredSelector } from 'reselect'
 
+import { GlobalContainer } from './cartStyles'
 
-const Cart = ({cart, addItem, removeItem, clearItem}) => {
-    useEffect(() => {
-        CartItems.map(item => addItem(item))
-    }, [addItem])
+const Cart = ({cart}) => {
+    console.log(cart.length)
     return(
-        <div>
+        <GlobalContainer>
             {
-                cart ? cart.map(item => <CartItem item={item} {...item} addItem={addItem} removeItem={removeItem} clearItem={clearItem} />) : null
+                cart.length > 0 ? cart.map(item => <CartItem item={item} />) : <p style={{textAlign: 'center', margin: '30px 0'}} >Cart is Empty</p>
             }
-        </div>
+        </GlobalContainer>
     )
 }
 
 const mapStateToProps = createStructuredSelector({
     cart: selectCartItems
   })
-  
-  const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch(AddItem(item)),
-    removeItem: item => dispatch(RemoveItem(item)),
-    clearItem: item => dispatch(ClearFromCart(item))
-  })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps)(Cart)
