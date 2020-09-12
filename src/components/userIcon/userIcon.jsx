@@ -17,7 +17,7 @@ const UserOptions = () => {
 }
 
 
-const UserIcon = () => {
+const UserIcon = ({clickable}) => {
     const [visible, setVisible] = useState(false)
 
     return(
@@ -26,7 +26,7 @@ const UserIcon = () => {
                 <Icon src={user} />
             </IconHolder>
             {
-                visible ? <UserOptions /> : null
+                visible && clickable  ? <UserOptions /> : null
             }
         </Container>
     )

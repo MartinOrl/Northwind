@@ -8,4 +8,6 @@ export const GlobalContainer = styled.div`
     padding: 5px 12px;
     min-height: 100px;
     transition: 300ms ease-in-out;
+    background: white;
+    z-index: 5;
 `

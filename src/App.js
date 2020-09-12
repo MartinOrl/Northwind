@@ -1,20 +1,36 @@
-import React from 'react';
-import { store } from './redux/store'
-import { Provider } from 'react-redux'
+import React, {useEffect} from 'react';
+import { Switch, Route } from 'react-router-dom'
 
 
+import Home from './pages/Home/home'
 import Header from './components/header/header'
+import Collection from './components/collection/collection'
+
+import { AddItem } from './redux/shopData/shopActions'
+import { connect } from 'react-redux';
+
+import { ShopData } from './testSuite'
 
 
-function App() {
-  
+function App({addItem}) {
+  useEffect(() => {
+    addItem(ShopData)
+  }, [addItem])
+
   return (
-    <Provider store={store}>
+    <div>
       <Header />
-    </Provider>
-  );
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/:id' component={Collection} />
+        </Switch>
+    </div>
+  )
 }
 
 
+const mapDispatch = dispatch => ({
+  addItem: item => dispatch(AddItem(item))
+})
 
-export default App;
+export default connect(null, mapDispatch)(App);

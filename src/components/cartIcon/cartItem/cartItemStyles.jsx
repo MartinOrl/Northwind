@@ -10,8 +10,8 @@ export const ItemContainer = styled.div`
 `
 
 export const Image = styled.img`
-    height: 50px;
-    width: 80px;
+    height: 100%;
+    width: 120px;
     border: 2px solid blue;
     margin: auto 0;
     @media screen and (max-width: 768px){
@@ -26,7 +26,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-    font-size: 12px;
+    font-size: 1.3rem;
     margin: 2px 0;
 `
 
@@ -38,7 +38,7 @@ export const AssetContainer = styled.div`
 `
 
 export const Price = styled.p`
-    font-size: 14px;
+    font-size: 1.2rem;
     margin: 4px 0;
 `
 
@@ -48,7 +48,7 @@ export const Separator = styled.hr`
 `
 
 export const Button = styled.p`
-    font-size: 12px;
+    font-size: 18px;
     &:hover{
         cursor: pointer;
     }

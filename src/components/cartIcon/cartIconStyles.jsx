@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     position: relative;
-    height: 30px;
+    height: 40px;
     margin: auto 0;
+    background: white;
 `
 
 export const IconHolder = styled.div`
@@ -13,13 +14,13 @@ export const IconHolder = styled.div`
 `
 
 export const Icon = styled.img`
-    height: 30px;
+    height: 40px;
     width: auto;
 `
 
 export const Count = styled.span`
     position: absolute;
     left: 50%;
-    top: 14%;
-    font-size: 11px;
+    top: 16%;
+    font-size: 15px;
 `

@@ -1,9 +1,19 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+export const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+    margin-right: auto;
+`
 
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
     padding: 16px 48px;
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 export const Brand = styled.div`
@@ -12,6 +22,9 @@ export const Brand = styled.div`
     margin-right: auto;
     &:hover{
         cursor: pointer;
+    }
+    @media screen and (max-width: 768px){
+        margin: 0 auto;
     }
 `
 
@@ -39,7 +52,10 @@ export const Search = styled.div`
     border: none;
     border-bottom: 1px solid black;
     position: relative;
-    margin-right: auto;
+    margin-right: 100px;
+    @media screen and (max-width: 768px){
+        display: none;
+    }
     &:focus-within{
         ${SearchIcon}{
             transform: rotate(45deg);
@@ -51,6 +67,7 @@ export const SearchBar = styled.input`
     width: 150px;
     padding: 8px 12px;
     background: none;
+    font-size: 16px;
     outline: none;
     border: none;
     &::placeholder{
@@ -60,9 +77,12 @@ export const SearchBar = styled.input`
 
 export const UserOptions = styled.div`
     height: 100%;
-    margin-left: 200px;
     display: flex;
     flex-direction: row;
+    @media screen and (max-width: 768px){
+        padding: 30px 16px;
+        justify-content: space-evenly;
+    }
 `
 
 export const Icon = styled.img`
@@ -74,7 +94,17 @@ export const Icon = styled.img`
 export const Collapsable = styled.div`
     display: flex;
     flex-direction: row;
+    z-index: 2;
     @media screen and (max-width: 768px){
         flex-direction: column;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 16px 32px;
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid black;
+        background: white;
+        justify-content: space-evenly;
     }
 `
