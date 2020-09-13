@@ -11,12 +11,15 @@ import { connect } from 'react-redux'
 
 const CartIcon = ({clickable, cart}) => {
     const [visible, setVisible] = useState(false)
-
+    let count = 0;
+    if(cart.length > 0){
+        cart.map(item => count += item.quantity)
+    }
     return(
         <Container>
             <IconHolder onClick={()=> setVisible(!visible)}>
                 <Icon src={svg}/>
-                <Count>{cart.length}</Count>
+                <Count>{count}</Count>
             </IconHolder>
             {
                 visible && clickable ? <Cart cart={cart} /> : null

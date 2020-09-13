@@ -18,9 +18,9 @@ const Discover = () => {
                     </DiscoverItem>
                 </StyledLink>
             </DiscoverContainer>
-            <StyledLink separate to='/warm-suits'>
+            <StyledLink separate to='/coats'>
                 <DiscoverItem separate imgUrl='https://images.pexels.com/photos/3777562/pexels-photo-3777562.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'>
-                    <DiscoverTitle separate>Warm Suits</DiscoverTitle>
+                    <DiscoverTitle separate>Coats</DiscoverTitle>
                 </DiscoverItem>
             </StyledLink>
         </GlobalContainer>

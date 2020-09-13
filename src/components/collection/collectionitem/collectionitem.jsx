@@ -1,12 +1,16 @@
-
 import React from 'react';
 
-const Collectionitem = () => {
+import { Container, Image, Title, Price } from './collectionitemStyles'
+
+const Collectionitem = ({item}) => {
+    const { name, price, imgUrl } = item
 
     return(
-        <div>
-        
-        </div>
+        <Container>
+            <Image src={imgUrl} />
+            <Title>{name}</Title>
+            <Price>{price}</Price>
+        </Container>
     )
 };
 

@@ -12,7 +12,6 @@ export const ItemContainer = styled.div`
 export const Image = styled.img`
     height: 100%;
     width: 120px;
-    border: 2px solid blue;
     margin: auto 0;
     @media screen and (max-width: 768px){
         width: 200px;

@@ -11,15 +11,18 @@ const ShopReducer = (state = INITIAL, action) => {
             if(Array.isArray(action.payload)){
                 return {
                     ...state,
-                    items: [...action.payload],
-                    hotDeals: action.payload.slice(0,4)
+                    items: [...action.payload]
                 }
             }
             return {
                 ...state,
                 items: [...state.items, action.payload]
             }
-
+        case ShopActionTypes.ADD_HOT_DEALS:
+            return {
+                ...state,
+                hotDeals: [...action.payload]
+            }
         default:
             return state
     }

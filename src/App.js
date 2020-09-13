@@ -6,16 +6,25 @@ import Home from './pages/Home/home'
 import Header from './components/header/header'
 import Collection from './components/collection/collection'
 
-import { AddItem } from './redux/shopData/shopActions'
+import { AddHotDeals, AddItem } from './redux/shopData/shopActions'
 import { connect } from 'react-redux';
 
-import { ShopData } from './testSuite'
+import { NewShopData } from './testSuite'
 
 
-function App({addItem}) {
+function App({addItem, addHotDeals}) {
   useEffect(() => {
-    addItem(ShopData)
-  }, [addItem])
+    let temp = []
+    var shopData = Object.entries(NewShopData).map(collection => collection[1])
+    shopData = shopData.slice(1)
+    shopData.map(data => temp = [...temp, ...data])
+    addItem(temp)
+
+    let hotDeals = Object.entries(NewShopData)[0][1]
+    addHotDeals(hotDeals)
+    
+  }, [addItem, addHotDeals])
+
 
   return (
     <div>
@@ -30,7 +39,8 @@ function App({addItem}) {
 
 
 const mapDispatch = dispatch => ({
-  addItem: item => dispatch(AddItem(item))
+  addItem: item => dispatch(AddItem(item)),
+  addHotDeals: deals => dispatch(AddHotDeals(deals))
 })
 
 export default connect(null, mapDispatch)(App);
