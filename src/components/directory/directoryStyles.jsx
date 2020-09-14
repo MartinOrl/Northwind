@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 export const Banner = styled.div`
     width: 90%;
@@ -30,12 +31,13 @@ export const BannerInfo = styled.div`
     }
 `
 
-export const BannerButton = styled.button`
+export const BannerButton = styled(Link)`
     padding: 16px 32px;
     background: none;
     font-size: 2rem;
     border: none;
     border-bottom: 1px solid white;
+    text-decoration: none;
     color: white;
     transition: 300ms ease-in-out;
     &:hover{

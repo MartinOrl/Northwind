@@ -64,7 +64,7 @@ export const NewShopData = {
             id: 35467897,
             name: 'Spectre',
             price: 32.99,
-            imgUrl: 'https://images.pexels.com/photos/3317133/pexels-photo-3317133.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+            imgUrl: 'https://images.pexels.com/photos/1381553/pexels-photo-1381553.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
             quantity: 0,
             collection: 'winterJackets'
         },
@@ -72,7 +72,7 @@ export const NewShopData = {
             id: 23456789,
             name: 'Glimmer',
             price: 26.99,
-            imgUrl: 'https://images.pexels.com/photos/3440827/pexels-photo-3440827.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+            imgUrl: 'https://images.pexels.com/photos/3615456/pexels-photo-3615456.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
             quantity: 0,
             collection: 'winterJackets'
         },
@@ -80,7 +80,7 @@ export const NewShopData = {
             id: 65483213,
             name: 'Eternal Youth',
             price: 25.99,
-            imgUrl: 'https://images.pexels.com/photos/1805853/pexels-photo-1805853.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+            imgUrl: 'https://images.pexels.com/photos/3584505/pexels-photo-3584505.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
             quantity: 0,
             collection: 'winterJackets'
         },
@@ -88,7 +88,7 @@ export const NewShopData = {
             id: 124567845,
             name: 'Daydream',
             price: 14.99,
-            imgUrl: 'https://images.pexels.com/photos/3509424/pexels-photo-3509424.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+            imgUrl: 'https://images.pexels.com/photos/3084035/pexels-photo-3084035.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
             quantity: 0,
             collection: 'winterJackets'
         },
@@ -106,7 +106,7 @@ export const NewShopData = {
             id: 3215489,
             name: 'Daydream',
             price: 12.99,
-            imgUrl: 'https://images.pexels.com/photos/251454/pexels-photo-251454.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+            imgUrl: 'https://images.pexels.com/photos/3244596/pexels-photo-3244596.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
             quantity: 0,
             collection: 'winterSocks'
         },

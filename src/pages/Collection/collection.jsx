@@ -7,7 +7,7 @@ import { SelectShopItems } from '../../redux/shopData/shopSelectors'
 
 import { CollectionItemsContainer } from './collectionStyles'
 
-import CollectionItem from './collectionitem/collectionitem'
+import CollectionItem from '../../components/collection/collectionitem/collectionitem'
 
 const Collection = ({shop}) => {
     let { id } = useParams()

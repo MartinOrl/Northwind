@@ -2,9 +2,11 @@ import React, {useEffect} from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 
-import Home from './pages/Home/home'
 import Header from './components/header/header'
-import Collection from './components/collection/collection'
+
+import Home from './pages/Home/home'
+import Collection from './pages/Collection/collection'
+import Checkout from './pages/Checkout/checkout'
 
 import { AddHotDeals, AddItem } from './redux/shopData/shopActions'
 import { connect } from 'react-redux';
@@ -31,6 +33,7 @@ function App({addItem, addHotDeals}) {
       <Header />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route exact path='/checkout' component={Checkout} />
           <Route path='/:id' component={Collection} />
         </Switch>
     </div>

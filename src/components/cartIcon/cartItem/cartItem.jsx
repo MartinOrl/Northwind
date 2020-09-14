@@ -14,7 +14,7 @@ const CartItem = ({item, clearItem}) => {
                 <Container>
                     <Image src={imgUrl} />
                 </Container>
-                <Container style={{marginRight: '16px'}}>
+                <Container style={{marginRight: 'auto'}}>
                     <Title>{name}</Title>
                     <Price>{(price * quantity).toFixed(2)}$</Price>
                 </Container>
