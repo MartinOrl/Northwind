@@ -8,7 +8,7 @@ import { Banner, Background, BannerButton, BannerTitle, BannerInfo, Title  } fro
 import Discover from './discover/discover'
 import Hotdeals from './hotdeals/hotdeals'
 
-const Directory = ({hotDeals}) => {
+const Directory = ({hotDeals}) => {  
     return(
         <div>
             <Banner>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { auth } from '../../firebase/firebase'
+
 import { Container, IconHolder, Icon, UserOptionsContainer, Option } from './userIconStyles'
 
 import user from '../../assets/user.svg'
@@ -11,7 +13,7 @@ const UserOptions = () => {
             <Option>My Profile</Option>
             <Option>My Orders</Option>
             <Option>Options</Option>
-            <Option>Log Out</Option>
+            <Option onClick={() => auth.signOut() }>Log Out</Option>
         </UserOptionsContainer>
     )
 }
@@ -21,7 +23,7 @@ const UserIcon = ({clickable}) => {
     const [visible, setVisible] = useState(false)
 
     return(
-        <Container>
+        <Container tabIndex='1' onBlur={() => setVisible(!visible)}>
             <IconHolder onClick={() => setVisible(!visible)}>
                 <Icon src={user} />
             </IconHolder>

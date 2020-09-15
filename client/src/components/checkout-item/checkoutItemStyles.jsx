@@ -19,6 +19,7 @@ export const ItemInfo = styled.div`
     display: flex;
     flex-direction: column;
     margin-right: auto;
+    width: 150px;
 `
 
 export const Title = styled.h1`

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 
 export const Title = styled.h1`
-    margin: 80px 0;
-    font-size: 1.5rem;
+    margin: 60px 0 25px 0;
+    font-size: 1.8rem;
 `
 
 export const LinkButton = styled(Link)`
@@ -21,4 +21,10 @@ export const LinkButton = styled(Link)`
         color: white;
         background: black;
     }
+`
+
+export const Price = styled.h1`
+    text-align: end;
+    font-size: 2rem;
+    margin: 12px;
 `
