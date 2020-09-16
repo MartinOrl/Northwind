@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect'
 import { Title, LinkButton, Price } from './checkoutStyles'
 
 import { selectCartItems } from '../../redux/cart/cartSelectors'
+import { SelectCurrentUser } from '../../redux/user/userSelectors'
 
 import CheckoutItem from '../../components/checkout-item/checkoutItem'
 import StripeCheckoutButton from '../../components/stripeCheckoutButton/stripeCheckoutButton'
@@ -19,7 +20,7 @@ const EmptyCart = () => {
     )
 }
 
-const Checkout = ({cart}) => {
+const Checkout = ({cart, user}) => {
     let total = 0;
     let price = 0;
     cart.map(item => {
@@ -28,7 +29,6 @@ const Checkout = ({cart}) => {
         return ''
     })
     total = parseFloat(total).toFixed(2)
-    console.log(total)
     return (
         <div style={{margin: '0 auto', width: '90%'}}>
         <div style={{textAlign: 'center', fontSize:'1.2rem'}}>
@@ -41,26 +41,27 @@ const Checkout = ({cart}) => {
             cart.map(item => <CheckoutItem item={item} />)
         }
         <Price>Total: {total}$</Price>
-        <StripeCheckoutButton price={total} />
+        <StripeCheckoutButton price={total} cart={cart} user={user} />
         </div>
     )
 }
 
 
-const CheckoutPage = ({cart}) => {
-
+const CheckoutPage = ({cart, user}) => {
+    console.log(user)
     return(
         <div style={{margin: '0 auto 100px auto', width: '90%'}}>
             <Title>Checkout</Title>
             {
-                cart.length > 0 ? <Checkout cart={cart} /> : <EmptyCart />
+                cart.length > 0 ? <Checkout cart={cart} user={user} /> : <EmptyCart />
             }
         </div>
     )
 }
 
 const mapState = createStructuredSelector({
-    cart: selectCartItems
+    cart: selectCartItems,
+    user: SelectCurrentUser
 })
 
 export default connect(mapState)(CheckoutPage);

@@ -1,37 +1,42 @@
 import React, {useEffect} from 'react';
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux';
 
 
 import Header from './components/header/header'
+import Signin from './components/signin/signin';
+import Signup from './components/signup/signup';
 
 import Home from './pages/Home/home'
 import Collection from './pages/Collection/collection'
 import CheckoutPage from './pages/Checkout/checkout'
 
 import { AddHotDeals } from './redux/shopData/shopActions'
-import { connect } from 'react-redux';
+import { SetCurrentUser } from './redux/user/userActions'
+
 import { auth, createUserProfile, firestore } from './firebase/firebase';
-import Signin from './components/signin/signin';
-import Signup from './components/signup/signup';
 
 
 
-function App({ addHotDeals}) {
+
+function App({ addHotDeals, setUser}) {
   useEffect(() => {
     firestore.collection('shopData').doc('hotDeals').get().then(doc => addHotDeals(doc.data().items))
     auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
-        console.log("Logged in")
         const userRef = await createUserProfile(userAuth);
         userRef.onSnapshot(snapShot => {
-          console.log(snapShot.id)
-          console.log(snapShot.data())
+          setUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          })
         })
       }
+      setUser(userAuth)
     })
 
 
-  }, [addHotDeals])
+  }, [addHotDeals, setUser])
 
 
   return (
@@ -50,7 +55,8 @@ function App({ addHotDeals}) {
 
 
 const mapDispatch = dispatch => ({
-  addHotDeals: deals => dispatch(AddHotDeals(deals))
+  addHotDeals: deals => dispatch(AddHotDeals(deals)),
+  setUser: user => dispatch(SetCurrentUser(user))
 })
 
 export default connect(null, mapDispatch)(App);

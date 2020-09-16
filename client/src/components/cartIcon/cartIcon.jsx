@@ -16,7 +16,7 @@ const CartIcon = ({clickable, cart}) => {
         cart.map(item => count += item.quantity)
     }
     return(
-        <Container tabIndex='1' onBlur={() => setVisible(!visible)} >
+        <Container >
             <IconHolder onClick={()=> setVisible(!visible)}>
                 <Icon src={svg}/>
                 <Count>{count}</Count>

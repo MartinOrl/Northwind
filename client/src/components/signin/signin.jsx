@@ -1,11 +1,12 @@
 import React from 'react';
 import { auth, signInWithGoogle  } from '../../firebase/firebase'
 
-import { GlobalContainer, Form, Button, ButtonContainer, StyledLink, GoogleButton, GoogleImage, GoogleText } from './signinStyles'
+import { GlobalContainer, Form, Button, ButtonContainer, StyledLink } from './signinStyles'
 
 import google from '../../assets/google.png'
 
 import FormInput from '../forminput/forminput'
+import Googlebutton from '../googlebutton/googlebutton';
 
 const Signin = () => {
 
@@ -15,7 +16,6 @@ const Signin = () => {
         const password = event.target.password.value
         try{
             await auth.signInWithEmailAndPassword(email, password)
-            console.log('Sign In Success')
         }
         catch(error){
             console.error(error)
@@ -25,17 +25,13 @@ const Signin = () => {
     return(
         <GlobalContainer>
             <Form onSubmit={handleSubmit} >
-                <FormInput type='email' name='email' placeholder='Email' />
-                <FormInput type='password' name='password' placeholder='Password' />
+                <FormInput type='email' name='email' placeholder='Email' required />
+                <FormInput type='password' name='password' placeholder='Password' required />
                 <ButtonContainer>
                     <Button type='submit'>Sign In</Button>
-                    <StyledLink type='submit' link>Sign Up</StyledLink>
+                    <StyledLink type='submit' to='/signUp'>Sign Up</StyledLink>
                 </ButtonContainer> 
-                <GoogleButton onClick={signInWithGoogle} >
-                    <GoogleImage src={google} alt='google icon' />
-                    <GoogleText>Sign in with Google</GoogleText>
-                </GoogleButton>
-                
+                <Googlebutton img={google} action={signInWithGoogle} />
             </Form>
         </GlobalContainer>
     )

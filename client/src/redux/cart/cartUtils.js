@@ -1,3 +1,4 @@
+import firebase, { firestore } from "../../firebase/firebase"
 
 export const addItemToCart = (cartItems, cartItemToAdd) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToAdd.id)
@@ -17,4 +18,18 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
     }
     return cartItems.map(cartItem => 
         cartItem.id === cartItemToRemove.id ? {...cartItem, quantity: cartItem.quantity -1 } : cartItem)
+}
+
+export const AddOrderToDatabase = (orders, id) => {
+    orders.map(order => {
+        firestore.collection('users').doc(`${id}`).update({
+            orders: firebase.firestore.FieldValue.arrayUnion(order)
+        })
+    })
+}
+
+export const GetOrdersFromDatabase = (id) => {
+    firestore.collection('users').doc(`${id}`).get().then(doc => {
+        return doc.data().orders
+    })
 }

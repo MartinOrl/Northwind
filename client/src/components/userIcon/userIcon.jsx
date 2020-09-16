@@ -12,8 +12,7 @@ const UserOptions = () => {
         <UserOptionsContainer>
             <Option>My Profile</Option>
             <Option>My Orders</Option>
-            <Option>Options</Option>
-            <Option onClick={() => auth.signOut() }>Log Out</Option>
+            <Option onClick={() => {auth.signOut(); window.location.href = '/'} }>Log Out</Option>
         </UserOptionsContainer>
     )
 }
