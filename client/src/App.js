@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect'
 
 
 import Header from './components/header/header'
@@ -15,11 +16,13 @@ import { AddHotDeals } from './redux/shopData/shopActions'
 import { SetCurrentUser } from './redux/user/userActions'
 
 import { auth, createUserProfile, firestore } from './firebase/firebase';
+import { SelectCurrentUser } from './redux/user/userSelectors';
+import MyOrders from './components/myorders/myorders';
 
 
 
 
-function App({ addHotDeals, setUser}) {
+function App({ addHotDeals, setUser, user}) {
   useEffect(() => {
     firestore.collection('shopData').doc('hotDeals').get().then(doc => addHotDeals(doc.data().items))
     auth.onAuthStateChanged(async userAuth => {
@@ -45,18 +48,22 @@ function App({ addHotDeals, setUser}) {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path='/signIn' component={Signin} />
-          <Route exact path='/signUp' component={Signup} />
+          <Route exact path='/signIn'>{user ? <Redirect to='/' /> : <Signin />}</Route>
+          <Route exact path='/signUp'>{user ? <Redirect to='/' /> : <Signup /> }</Route>
+          <Route exact path='/myOrders' component={MyOrders} />
           <Route path='/:id' component={Collection} />
         </Switch>
     </div>
   )
 }
 
+const mapState = createStructuredSelector({
+  user: SelectCurrentUser
+})
 
 const mapDispatch = dispatch => ({
   addHotDeals: deals => dispatch(AddHotDeals(deals)),
   setUser: user => dispatch(SetCurrentUser(user))
 })
 
-export default connect(null, mapDispatch)(App);
+export default connect(mapState, mapDispatch)(App);

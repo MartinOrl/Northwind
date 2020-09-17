@@ -25,7 +25,9 @@ export const AddOrderToDatabase = (orders, id) => {
         firestore.collection('users').doc(`${id}`).update({
             orders: firebase.firestore.FieldValue.arrayUnion(order)
         })
+        return ''
     })
+    
 }
 
 export const GetOrdersFromDatabase = (id) => {

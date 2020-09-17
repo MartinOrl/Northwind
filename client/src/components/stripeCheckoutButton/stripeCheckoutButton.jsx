@@ -6,15 +6,17 @@ import { AddOrderToDatabase } from '../../redux/cart/cartUtils'
 
 import logo from '../../assets/northwind.svg'
 import { ClearCart } from '../../redux/cart/cartActions'
+import { AddOrder } from '../../redux/user/userActions'
 
 
-const StripeCheckoutButton = ({price, cart, user, clearCart}) => {
+const StripeCheckoutButton = ({price, cart, user, clearCart, addOrder}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_SZgJwqkCt9AZxnpNWOjVZ8fs00Ox0v4xO2'
     console.log(cart)
     const onToken = token => {
         alert("Payment Succesful")
         AddOrderToDatabase(cart, user.id)
+        addOrder(cart)
         clearCart()
         
     }
@@ -37,7 +39,8 @@ const StripeCheckoutButton = ({price, cart, user, clearCart}) => {
 }
 
 const mapDispatch = dispatch => ({
-    clearCart: () => dispatch(ClearCart())
+    clearCart: () => dispatch(ClearCart()),
+    addOrder: order => dispatch(AddOrder(order))
 })
 
 export default connect(null, mapDispatch)(StripeCheckoutButton)

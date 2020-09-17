@@ -1,18 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { SelectCurrentUser } from '../../redux/user/userSelectors'
+import { SelectCurrentUser, SelectUserOrders } from '../../redux/user/userSelectors'
 
 import { GlobalContainer, Title, OrderContainer, Image, OrderTitle, PriceContainer, Price, Quantity, Status  } from './myordersStyles'
 
 
-const Myorders = ({user}) => {
-
+const MyOrders = ({ orders}) => {
     return(
         <GlobalContainer>
             <Title>My Orders</Title>
             {
-                
+                orders 
+                ? 
+                orders.map(order=> (
+                    <OrderContainer>
+                        <Image src={order.imgUrl} />
+                        <OrderTitle>{order.name}</OrderTitle>
+                        <PriceContainer>
+                            <Price>{parseFloat(order.price * order.quantity).toFixed(2)}$</Price>
+                            <Quantity>Quantity: {order.quantity}</Quantity>
+                        </PriceContainer>
+                        <Status>Delivered</Status>
+                    </OrderContainer>
+                ))
+                : null
             }
         
         </GlobalContainer>
@@ -20,8 +32,9 @@ const Myorders = ({user}) => {
 };
 
 const mapState = createStructuredSelector({
-    user: SelectCurrentUser
+    user: SelectCurrentUser,
+    orders: SelectUserOrders
 })
 
-export default connect(mapState)(Myorders) 
+export default connect(mapState)(MyOrders) 
 

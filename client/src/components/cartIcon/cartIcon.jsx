@@ -22,7 +22,7 @@ const CartIcon = ({clickable, cart}) => {
                 <Count>{count}</Count>
             </IconHolder>
             {
-                visible && clickable ? <Cart cart={cart} /> : null
+                visible && clickable ? <Cart cart={cart}/> : null
             }
         </Container>
     )

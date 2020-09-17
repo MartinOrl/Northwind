@@ -1,36 +1,51 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
 import { auth } from '../../firebase/firebase'
 
 import { Container, IconHolder, Icon, UserOptionsContainer, Option } from './userIconStyles'
 
-import user from '../../assets/user.svg'
+import userIcon from '../../assets/user.svg'
 
-const UserOptions = () => {
+import { SelectCurrentUser } from '../../redux/user/userSelectors'
 
+
+const UserOptions = ({user}) => {
+    console.log(user)
     return(
         <UserOptionsContainer>
-            <Option>My Profile</Option>
-            <Option>My Orders</Option>
-            <Option onClick={() => {auth.signOut(); window.location.href = '/'} }>Log Out</Option>
+            <Option onClick={() => user ? window.location.href='/myProfile' : window.location.href='/signIn'} >My Profile</Option>
+            <Option onClick={() => user ? window.location.href='/myOrders' : window.location.href='/signIn'} >My Orders</Option>
+            {
+                user
+                ? 
+                <Option onClick={() => {auth.signOut(); window.location.href = '/'} }>Log Out</Option>
+                :
+                <Option onClick={() => window.location.href = '/signIn' }>Sign In</Option>
+            }
         </UserOptionsContainer>
     )
 }
 
 
-const UserIcon = ({clickable}) => {
+const UserIcon = ({clickable, user}) => {
     const [visible, setVisible] = useState(false)
 
     return(
-        <Container tabIndex='1' onBlur={() => setVisible(!visible)}>
+        <Container>
             <IconHolder onClick={() => setVisible(!visible)}>
-                <Icon src={user} />
+                <Icon src={userIcon} />
             </IconHolder>
             {
-                visible && clickable  ? <UserOptions /> : null
+                visible && clickable  ? <UserOptions user={user} /> : null
             }
         </Container>
     )
 }
 
-export default UserIcon
+const mapState = createStructuredSelector({
+    user: SelectCurrentUser
+})
+
+export default connect(mapState)(UserIcon)
