@@ -8,6 +8,8 @@ const Hotdeals = ({hotDeals, addItemToCart}) => {
     return(
         <GlobalContainer>
             {
+                hotDeals 
+                ? 
                 hotDeals.map(deal => ( 
                     <HotDealItem>
                         <HotDealImage src={deal.imgUrl} />
@@ -16,6 +18,8 @@ const Hotdeals = ({hotDeals, addItemToCart}) => {
                         <Button onClick={() => addItemToCart(deal)} >Add to Cart</Button>
                     </HotDealItem>
                 ))
+                :
+                null
             }
         </GlobalContainer>
     )

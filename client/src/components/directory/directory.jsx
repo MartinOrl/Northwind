@@ -15,7 +15,7 @@ const Directory = ({hotDeals}) => {
                 <Background imgUrl='https://images.pexels.com/photos/54206/pexels-photo-54206.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
                 <BannerInfo>
                     <BannerTitle>Don't let Winter<br />surprise you!</BannerTitle>
-                    <BannerButton to='/coats'>Shop Now</BannerButton>
+                    <BannerButton to='/collection/coats'>Shop Now</BannerButton>
                 </BannerInfo>
             </Banner>
             <Title>Hot Deals</Title>
