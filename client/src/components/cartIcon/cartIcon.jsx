@@ -15,9 +15,14 @@ const CartIcon = ({clickable, cart}) => {
     if(cart.length > 0){
         cart.map(item => count += item.quantity)
     }
+    const handleResponsiveClick = () => {
+        if(window.innerWidth < 768){
+            window.location.href='/checkout'
+        }
+    }
     return(
         <Container >
-            <IconHolder onClick={()=> setVisible(!visible)}>
+            <IconHolder onClick={()=> {setVisible(!visible); handleResponsiveClick()}}>
                 <Icon src={svg}/>
                 <Count>{count}</Count>
             </IconHolder>

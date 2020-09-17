@@ -22,5 +22,5 @@ export const Count = styled.span`
     position: absolute;
     left: 50%;
     top: 16%;
-    font-size: 15px;
+    font-size: 16px;
 `

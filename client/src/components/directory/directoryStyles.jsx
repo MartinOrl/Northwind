@@ -46,6 +46,9 @@ export const BannerButton = styled(Link)`
         border: 1px solid white;
         cursor: pointer;
     }
+    @media screen and (max-width: 768px){
+        border: 1px solid white;
+    }
 
 `
 

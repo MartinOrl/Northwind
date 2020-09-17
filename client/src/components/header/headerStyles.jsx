@@ -94,13 +94,13 @@ export const Icon = styled.img`
 export const Collapsable = styled.div`
     display: flex;
     flex-direction: row;
-    z-index: 2;
+    z-index: 20;
     @media screen and (max-width: 768px){
         flex-direction: column;
         position: fixed;
         bottom: 0;
         left: 0;
-        padding: 16px 32px;
+        padding: 0px 32px;
         box-sizing: border-box;
         width: 100%;
         border: 1px solid black;

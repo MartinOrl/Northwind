@@ -16,6 +16,13 @@ const Header = () => {
             setClickable(false)
         }
     }, [])
+
+    const handleResponsiveClick = (href) => {
+        if(window.innerWidth < 768){
+            window.location.href=`/${href}`
+        }
+    }
+
     return(
         <Container>
             <StyledLink to='/'>
@@ -30,8 +37,8 @@ const Header = () => {
                     <SearchBar type='text' name='search' placeholder='I am looking for ...' />
                 </Search>
                 <UserOptions>
-                    <UserIcon clickable={clickable} />
-                    <CartIcon clickable={clickable} />
+                    <UserIcon clickable={clickable} onClick={() => handleResponsiveClick('myOrders')} />
+                    <CartIcon clickable={clickable} onClick={() => handleResponsiveClick('checkout')} />
                 </UserOptions>
             </Collapsable>
         </Container>

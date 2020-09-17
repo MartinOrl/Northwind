@@ -11,6 +11,10 @@ export const GlobalContainer = styled.div`
     @media screen and (max-width: 1520px){
         width: 100%;
     }
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+        width: 90%;
+    }
 `
 
 const normalStyle = css`
@@ -37,7 +41,7 @@ const separateStyle = css`
     }
     @media screen and (max-width: 768px){
         background-position: center;
-        margin: 0 16px;
+        margin: 0 auto;
         width: 100%;
         height: 400px;
         margin: 8px 0;
@@ -59,6 +63,11 @@ export const DiscoverTitle = styled.h1`
     left: 20%;
     transition: 200ms ease-in-out;
     z-index: 5;
+    @media screen and (max-width: 768px){
+        opacity: 1;
+        top: 10%;
+        left: 13%;
+    }
 `
 
 export const DiscoverItem = styled.div`
@@ -89,6 +98,7 @@ export const DiscoverContainer = styled.div`
     }
     @media screen and (max-width: 768px){
         width: 100%;
+        margin: 0 auto;
     }
 `
 
@@ -98,5 +108,8 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     ${
         props => props.separate ? 'width: 30%' : 'width: 100%'
+    }
+    @media screen and (max-width: 768px){
+        width: 100%;
     }
 `

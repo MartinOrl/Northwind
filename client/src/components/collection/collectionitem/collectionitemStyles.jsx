@@ -6,6 +6,9 @@ export const Container = styled.div`
     flex-direction: column;
     text-align: center;
     width: 300px;
+    @media screen and (max-width: 768px){
+        width: 100%;
+    }
 `
 
 export const Image = styled.img`
@@ -13,6 +16,9 @@ export const Image = styled.img`
     width: auto;
     object-fit: cover;
     margin-bottom: 12px;
+    @media screen and (max-width: 768px){
+        width: 100%;
+    }
 `
 
 export const Title = styled.h1`

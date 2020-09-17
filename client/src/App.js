@@ -53,7 +53,7 @@ class App extends React.Component{
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route exact path='/signIn'>{user ? <Redirect to='/' /> : <Signin />}</Route>
           <Route exact path='/signUp'>{user ? <Redirect to='/' /> : <Signup /> }</Route>
-          <Route exact path='/myOrders' component={MyOrders} />
+          <Route exact path='/myOrders'>{user ? <MyOrders /> : <Redirect to='/signIn' />}</Route>
           <Route path='/collection/:id' component={Collection} />
         </Switch>
       </div>

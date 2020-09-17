@@ -14,6 +14,9 @@ export const HotDealItem = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    @media screen and (max-width: 768px){
+        margin: 12px 0;
+    }
 `
 
 export const HotDealImage = styled.img`
@@ -44,5 +47,8 @@ export const Button = styled.button`
         background: black;
         color: white;
         cursor: pointer;
+    }
+    @media screen and (max-width: 768px){
+        border: 1px solid black;
     }
 `

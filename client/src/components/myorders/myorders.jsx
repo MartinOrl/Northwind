@@ -6,7 +6,7 @@ import { SelectCurrentUser, SelectUserOrders } from '../../redux/user/userSelect
 import { GlobalContainer, Title, OrderContainer, Image, OrderTitle, PriceContainer, Price, Quantity, Status  } from './myordersStyles'
 
 
-const MyOrders = ({ orders}) => {
+const MyOrders = ({ orders }) => {
     return(
         <GlobalContainer>
             <Title>My Orders</Title>
