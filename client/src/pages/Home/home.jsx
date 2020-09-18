@@ -8,7 +8,6 @@ const GlobalContainer = styled.div`
 
 
 const Home = () => {
-
     return(
         <GlobalContainer>
             <Directory />

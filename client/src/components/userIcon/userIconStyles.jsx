@@ -26,6 +26,7 @@ export const UserOptionsContainer = styled.div`
     border: 1px solid black;
     background: white;
     z-index: 3;
+    transition: 300ms ease-in-out;
 `
 
 export const Option = styled.p`

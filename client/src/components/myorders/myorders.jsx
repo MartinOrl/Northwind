@@ -24,7 +24,7 @@ const MyOrders = ({ orders }) => {
                         <Status>Delivered</Status>
                     </OrderContainer>
                 ))
-                : null
+                : <Title style={{textAlign:'center'}} >Empty Orders</Title>
             }
         
         </GlobalContainer>

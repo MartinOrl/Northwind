@@ -34,7 +34,7 @@ const Checkout = ({cart, user}) => {
         <div style={{textAlign: 'center', fontSize:'1.2rem'}}>
             <p>Please not this is not a functional cart for this is a demo. Please use credit cart details below for testing &darr;
                 <br/>
-                4242 4242 4242 4242 - Exp: 1/20 - CVV: 123
+                4242 4242 4242 4242 - Exp: 1/23 - CVV: 123
             </p>
         </div>
         {

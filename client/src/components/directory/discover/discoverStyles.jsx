@@ -106,9 +106,7 @@ export const DiscoverContainer = styled.div`
 export const StyledLink = styled(Link)`
     color: black;
     text-decoration: none;
-    ${
-        props => props.separate ? 'width: 30%' : 'width: 100%'
-    }
+    width: ${props => props.separate ? '30%' : '100%'};
     @media screen and (max-width: 768px){
         width: 100%;
     }

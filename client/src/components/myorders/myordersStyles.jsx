@@ -35,7 +35,7 @@ export const OrderContainer = styled.div`
 
 export const Image = styled.img`
     object-fit: cover;
-    height: 100%;
+    height: 240px;
     width: 350px;
     margin-right: 10px;
     @media screen and (max-width: 768px){

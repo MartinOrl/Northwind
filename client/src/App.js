@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
@@ -8,10 +8,9 @@ import Header from './components/header/header'
 import Signin from './components/signin/signin';
 import Signup from './components/signup/signup';
 import MyOrders from './components/myorders/myorders';
+import ErrorBoundary from './components/errorBoundary/errorBoundary'
+import Spinner from './components/spinner/spinner'
 
-import Home from './pages/Home/home'
-import Collection from './pages/Collection/collection'
-import CheckoutPage from './pages/Checkout/checkout'
 
 import { AddHotDeals } from './redux/shopData/shopActions'
 import { SetCurrentUser } from './redux/user/userActions'
@@ -19,10 +18,15 @@ import { SetCurrentUser } from './redux/user/userActions'
 import { auth, createUserProfile, firestore } from './firebase/firebase';
 import { SelectCurrentUser } from './redux/user/userSelectors';
 
+const Home = lazy(() => import('./pages/Home/home'))
+const Collection = lazy(() => import('./pages/Collection/collection'))
+const CheckoutPage = lazy(() => import('./pages/Checkout/checkout'))
+
 class App extends React.Component{
   unsubscribeFromAuth = null
 
   componentDidMount(){
+    console.log("Loaded")
     const { addHotDeals, setUser } = this.props
     firestore.collection('shopData').doc('hotDeals').get().then(doc => addHotDeals(doc.data().items))
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -49,12 +53,16 @@ class App extends React.Component{
       <div>
         <Header />
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path='/signIn'>{user ? <Redirect to='/' /> : <Signin />}</Route>
-          <Route exact path='/signUp'>{user ? <Redirect to='/' /> : <Signup /> }</Route>
-          <Route exact path='/myOrders'>{user ? <MyOrders /> : <Redirect to='/signIn' />}</Route>
-          <Route path='/collection/:id' component={Collection} />
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/checkout' component={CheckoutPage} />
+              <Route exact path='/signIn'>{user ? <Redirect to='/' /> : <Signin />}</Route>
+              <Route exact path='/signUp'>{user ? <Redirect to='/' /> : <Signup /> }</Route>
+              <Route exact path='/myOrders' component={MyOrders} />
+              <Route path='/collection/:id' component={Collection} />
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
       </div>
     )
