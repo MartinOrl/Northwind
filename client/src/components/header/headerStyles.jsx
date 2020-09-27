@@ -5,6 +5,9 @@ export const StyledLink = styled(Link)`
     color: black;
     text-decoration: none;
     margin-right: auto;
+    @media screen and (max-width: 768px){
+        margin: ${props => props.brand ? '0 auto' : '0 auto 0 0'}   
+    }
 `
 
 export const Container = styled.div`
@@ -80,7 +83,7 @@ export const UserOptions = styled.div`
     display: flex;
     flex-direction: row;
     @media screen and (max-width: 768px){
-        padding: 30px 16px;
+        padding: 16px;
         justify-content: space-evenly;
     }
 `

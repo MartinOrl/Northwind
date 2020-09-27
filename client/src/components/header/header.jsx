@@ -25,7 +25,7 @@ const Header = () => {
 
     return(
         <Container>
-            <StyledLink to='/'>
+            <StyledLink to='/' brand >
                 <Brand>
                     <BrandImage src={logo} />
                     <BrandText>Northwind</BrandText>

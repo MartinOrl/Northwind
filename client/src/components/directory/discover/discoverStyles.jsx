@@ -84,7 +84,10 @@ export const DiscoverItem = styled.div`
             opacity: 1;
         }
     }
-    ${getStyle}
+    ${getStyle};
+    @media screen and (max-width: 768px){
+        opacity: 1 !important;
+    }
 `
 
 export const DiscoverContainer = styled.div`

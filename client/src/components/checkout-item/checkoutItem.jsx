@@ -20,7 +20,7 @@ const CheckoutItem = ({item, addItem, removeItem, clearItem }) => {
                     <Button onClick={() => addItem(item)} >&gt;</Button>
                 </QuantityContainer>
                 <Price>{parseFloat((price*quantity)).toFixed(2)} $</Price>
-                <Button onClick={() => clearItem(item)}>Remove</Button>
+                <Button onClick={() => clearItem(item)} >Remove</Button>
             </GlobalContainer>
             <Separator />
         </div>

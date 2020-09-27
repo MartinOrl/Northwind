@@ -26,7 +26,6 @@ class App extends React.Component{
   unsubscribeFromAuth = null
 
   componentDidMount(){
-    console.log("Loaded")
     const { addHotDeals, setUser } = this.props
     firestore.collection('shopData').doc('hotDeals').get().then(doc => addHotDeals(doc.data().items))
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -39,7 +38,7 @@ class App extends React.Component{
           })
         })
       }
-      setUser(userAuth)
+      setUser(userAuth);
     })
   };
 
@@ -55,11 +54,11 @@ class App extends React.Component{
         <Switch>
           <ErrorBoundary>
             <Suspense fallback={<Spinner />}>
-              <Route exact path='/' component={Home} />
               <Route exact path='/checkout' component={CheckoutPage} />
               <Route exact path='/signIn'>{user ? <Redirect to='/' /> : <Signin />}</Route>
               <Route exact path='/signUp'>{user ? <Redirect to='/' /> : <Signup /> }</Route>
               <Route exact path='/myOrders' component={MyOrders} />
+              <Route exact path='/' component={Home} />
               <Route path='/collection/:id' component={Collection} />
             </Suspense>
           </ErrorBoundary>

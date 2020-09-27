@@ -32,7 +32,7 @@ const Checkout = ({cart, user}) => {
     return (
         <div style={{margin: '0 auto', width: '90%'}}>
         <div style={{textAlign: 'center', fontSize:'1.2rem'}}>
-            <p>Please not this is not a functional cart for this is a demo. Please use credit cart details below for testing &darr;
+            <p>Please not this is not a functional cart, for this is a demo. Please use credit cart details below for testing &darr;
                 <br/>
                 4242 4242 4242 4242 - Exp: 1/23 - CVV: 123
             </p>

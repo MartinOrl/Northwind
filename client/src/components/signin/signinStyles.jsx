@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 
 export const GlobalContainer = styled.div`
-    width: 70%;
+    width: 80%;
     margin: 25px auto;
 `
 

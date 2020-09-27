@@ -31,10 +31,16 @@ const UserOptions = ({user}) => {
 
 const UserIcon = ({clickable, user}) => {
     const [visible, setVisible] = useState(false)
+    console.log(user)
 
     const handleResponsiveClick = () => {
         if(window.innerWidth < 768){
-            window.location.href='/myOrders'
+            if(user){
+                window.location.href = '/myOrders'
+            }
+            else{
+                window.location.href = '/signIn'
+            }
         }
     }
 
