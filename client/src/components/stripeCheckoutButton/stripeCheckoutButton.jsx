@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout'
 
 import { AddOrderToDatabase } from '../../redux/cart/cartUtils'
 
-import logo from '../../assets/northwind.svg'
+import logo from '../../assets/northwind.png'
 import { ClearCart } from '../../redux/cart/cartActions'
 import { AddOrder } from '../../redux/user/userActions'
 
@@ -12,7 +12,6 @@ import { AddOrder } from '../../redux/user/userActions'
 const StripeCheckoutButton = ({price, cart, user, clearCart, addOrder}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_SZgJwqkCt9AZxnpNWOjVZ8fs00Ox0v4xO2'
-    console.log(cart)
     const onToken = token => {
         alert("Payment Succesful")
         AddOrderToDatabase(cart, user.id)
